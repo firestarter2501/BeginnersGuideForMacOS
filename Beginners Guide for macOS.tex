@@ -1,0 +1,159 @@
+\documentclass[twocolumn, 12pt, a4j]{jsarticle}
+
+\usepackage[margin=12mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{verbatim}
+\usepackage{diagbox}
+\usepackage{url}
+
+\setcounter{tocdepth}{2}
+
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\divergence}{\mathrm{div}\,}
+\newcommand{\grad}{\mathrm{grad}\,}
+\newcommand{\rot}{\mathrm{rot}\,}
+
+\title{Macにちょっと慣れてきた人のためのmacOS入門 
+    \\ 〜さらにMacと仲良くなるために〜}
+\author{石塚 快 \\ @firestarter2501}
+\date{\today}
+
+\begin{document}
+
+\twocolumn[
+    \maketitle
+    \begin{abstract}
+        Macを使い始めて慣れてきた読者であってもこの先使い込んでゆくにつれて、コンピュータによくある不具合から
+        macOS特有の不具合までさまざまなトラブルに遭遇するであろう。これらに自力で対処できるよう、
+        基本的なコンピュータとmacOSの仕組みやそれらを踏まえたトラブル対処方法について、
+        非理系の一般ユーザーが拒絶反応を起こさないであろう範囲で述べる。\\
+        追伸：この文書のTeXファイルは\url{https://github.com/firestarter2501/BeginnersGuideForMacOS}にあるので追記・修正があればissueを飛ばしてほしい。
+        \\
+    \end{abstract}
+]
+\tableofcontents
+\clearpage
+\part{Macコンピュータの仕組み}
+
+    \section{コンピュータの全景}
+
+        \subsection{改めてコンピュータとは何なのか}
+        シンプル言うとにコンピュータとはすごい電卓である(小並感、、)。
+        しかし実際はそんなシンプルではなく、複雑な要求に対応できるよう多機能かつ処理部の細分化が行われている。
+        これによりコンピュータに対して苦手意識を持つ者は多い。
+
+        もちろん中身が分からなくても十分使いこなせるよう作られているものの、
+        さらに使い込むには少し踏み込んだ内容の知識が必要になる。
+
+        せっかく手に入れたMacであろうから、少しずつ仕組みを理解して使い込んで、頼れる相棒にしてほしい。
+
+        \subsection{どのように動作するのか}
+        先に述べたように、コンピュータは処理の種類によって部品を使い分けている。
+        その他にもそれぞれの部品をつなぐ部品や、それらを動かす
+        ソフトウェアの連携でコンピュータは動作している。
+
+        なので、もしコンピュータに不具合が出た場合は症状によって
+        不具合の出ている部品やソフトウェアを特定することができる。
+        つまりトラブル対処において大事なのはどの部品やソフトウェアが
+        どのような役割を果たしているのかをよく把握することである。
+        よって以下に基本的な部品たちを紹介する。
+
+    \section{Macの主要な部品たち}
+
+        \subsection{CPU}
+        Central Processing Unit(中央処理装置)の略であり、名前の通りほとんどの処理がここで行われる。
+        
+        本来は純粋にユーザーから指示された処理のみ行うものであったが、
+        近年はシステムの汎用性に合わせて高機能化しており、一つの機能に特化した複数のCPU\footnote{Co-Processorと呼ばれる。}を
+        1つのパッケージにまとめたSoC\footnote{System on Chipの略。近年Macに搭載されているMシリーズはまさにその代表である。}をCPUと呼ぶことが多い。
+        
+        また、Macユーザーとしてはアーキテクチャ\footnote{CPUが情報を処理する仕組み}の簡単な特性についても知っておくべきである。
+        従来のMacはIntel CPUのx86アーキテクチャが採用されていたが、近年のMacはARMアーキテクチャが採用された独自開発のMシリーズプロセッサが使われている。
+        
+        これにより、電力効率やパフォーマンスが向上したほか、機械学習や動画エンコードなどさまざまな機能に合わせたコプロセッサが搭載された。
+        一方でアプリケーションはアーキテクチャによって使えるプログラミングの機能が異なるため、従来のMacで動いていたアプリケーションが使用できないことがある。
+        これに対処するために、Appleはx86用からARM用に自動でアプリケーションを書き換えるRosetta2というソフトウェアを用意している。
+
+        \subsection{GPU}
+        Graphics Processing Unit(画像処理装置)の略。グラフィックの処理に特化している。
+
+        コンピュータ上ではグラフィックはCPUが苦手な行列という数学上の概念によって表されるため、このように専用の部品が用意されている。
+        また、グラフィックだけでなく機械学習や仮想通貨マイニングのアルゴリズムも行列計算を行うため、近年需要が高まっている。
+
+        macOSではアプリケーションがMetalという仕組みを使用することでGPUの性能を引き出せるようになっているため、グラフィック周りのソフトを探すときは
+        これに対応するソフトを探すのが良い。
+
+        \subsection{RAM}
+
+        \subsection{ROM/Internal Memory Storage}
+
+        \subsection{Logic Board＆EFI}
+
+\part{macOSの仕組み}
+
+    \section{そもそもOSって何？}
+
+    \section{macOSの立ち位置}
+
+    \section{macOSの動く仕組み}
+
+        \subsection{フォルダ構造とその役割}
+
+            \subsubsection{/}
+
+            \subsubsection{/Application}
+
+            \subsubsection{/Users}
+
+            \subsubsection{/Library}
+
+            \subsubsection{/Volumes}
+
+            \subsubsection{/System}
+
+            \subsubsection{/cores}
+
+            \subsubsection{/bin}
+
+            \subsubsection{/dev}
+
+            \subsubsection{/etc}
+
+            \subsubsection{/opt}
+
+            \subsubsection{/private}
+
+            \subsubsection{/sbin}
+
+            \subsubsection{/tmp}
+
+            \subsubsection{/usr}
+
+            \subsubsection{/var}
+
+        \subsection{ネットワーク周りについて}
+
+        \subsection{アプリケーション周りについて}
+
+        \subsection{FileVaultについて}
+
+        \subsection{TimeMachineについて}
+
+\part{代表的なトラブルとその対処}
+    \section{学内ネットワークに接続できない}
+
+    \section{アプリケーションが正しく動作しない}
+
+    \section{空き容量がない}
+
+    \section{macOSの動作がおかしい}
+
+    \section{起動しない}
+        \subsection{IntelMacの場合}
+
+        \subsection{ARMMacの場合}
+
+\end{document}
